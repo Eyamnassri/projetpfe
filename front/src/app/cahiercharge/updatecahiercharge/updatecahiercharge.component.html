@@ -1,0 +1,70 @@
+<div>
+  <span>
+    <span><a routerLink="../../"> Cahier de charger</a></span> /
+    <span><a> Modifier</a></span>
+  </span>
+    <div  *ngIf="show" class="alert alert-success" role="alert">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+          </div>
+          <span class="alert-text">{{message}}</span>
+        </div>
+      </div>
+      </div>
+    
+      <div  *ngIf="showError" class="alert   alert-danger" role="alert">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+            </div>
+            <span class="alert-text">{{message}}</span>
+          </div>
+        </div></div>
+  </div>   
+  <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+    <clr-input-container>
+      <label>Titre:</label>
+      <input clrInput type="text" formControlName="titre"  />
+      <clr-control-helper>Entre un titre de cahier de charger valide</clr-control-helper>
+      <clr-control-error>Titre is required</clr-control-error>
+    </clr-input-container>
+
+    <clr-input-container>
+  <label>description</label>
+      <input clrInput type="text" formControlName="description"  />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+    <clr-input-container>
+    <label>type</label>
+      <input clrInput type="text" formControlName="typeDocument"  />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+    <clr-toggle-container clrInline>
+      <label>isValide</label>      <clr-toggle-wrapper>
+        <input type="checkbox" clrToggle name="options" formControlName="isValide"  value="option1"  />
+        <label>Option 1</label>
+      </clr-toggle-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>This field is !</clr-control-error>
+    </clr-toggle-container>
+  <clr-input-container>
+    <label>documentName</label>
+      <input clrInput type="text" formControlName="documentName"  />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+
+      <br>
+      <div class="btn-group btn-primary">
+        <button  class="btn btn-danger">Annuler</button>
+        <button class="btn btn-success" type='submit'  [disabled]="!form.valid"> Modifier </button>
+        
+      </div>
+  
+  </form>
+

@@ -1,0 +1,95 @@
+<section>
+  <h3>Dossiers d'Achats </h3>
+    <clr-datagrid>
+      <clr-dg-action-bar>
+        <div class="btn-group">
+          <button type="button"  class="btn btn-sm btn-secondary"  routerLink="add-cahiercharge" >
+            <cds-icon shape="plus"></cds-icon>
+            Ajouter cahier des charges
+          </button>
+          <!--
+           <button type="button" class="btn btn-sm btn-secondary" (click)="show = true">
+            <cds-icon shape="close"></cds-icon>
+            Delete
+          </button>
+          <button type="button" class="btn btn-sm btn-secondary" >
+            <cds-icon shape="pencil"></cds-icon>
+            Edit
+          </button>-->
+           
+        </div>
+        </clr-dg-action-bar>
+        <clr-dg-column [clrDgField]="'id'">Id</clr-dg-column>
+    <clr-dg-column [clrDgField]="'titre'">titre</clr-dg-column>
+    <clr-dg-column [clrDgField]="'description'">description</clr-dg-column>
+    <clr-dg-column [clrDgField]="'typeDocumment'">Nom de Documment</clr-dg-column>
+
+    <clr-dg-column [clrDgField]="'createdAt'">Date de création</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autorisation1'">Autorisation</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autorisation2'">Autorisation Fianlle</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autorisation1'">Demande</clr-dg-column>
+    <clr-dg-column [clrDgField]="'autorisation2'">Etat de demande </clr-dg-column>
+    <clr-dg-column [clrDgField]="'action'">Action</clr-dg-column>
+  
+    <clr-dg-row *ngFor="let item of cahiercharge ">
+      <clr-dg-cell >{{item.id}}</clr-dg-cell>
+      <clr-dg-cell >{{item.titre}}</clr-dg-cell>
+      <clr-dg-cell  routerLink="detail-cahiercharge/{{item.id}}">{{item.description}}</clr-dg-cell>
+      <clr-dg-cell  routerLink="detail-cahiercharge/{{item.id}}">{{item.documentName}}</clr-dg-cell>
+
+      <clr-dg-cell routerLink="detail-cahiercharge/{{item.id}}">{{item.createdAt}}</clr-dg-cell>
+      <clr-dg-cell routerLink="detail-cahiercharge/{{item.id}}">
+        <span *ngIf="item.autorisation2=='valide'" class="badge badge-success">
+          Valide
+        </span>
+        <span *ngIf="item.autorisation2=='au cours'" class="badge badge-info">
+          au cours traitement
+        </span>
+        <span  *ngIf="item.autorisation2=='refuse'" class="badge badge-danger">
+          Refuse
+        </span>
+   </clr-dg-cell>
+      <clr-dg-cell routerLink="detail-cahiercharge/{{item.id}}">
+        <span *ngIf="item.autorisation1=='valide'" class="badge badge-success">
+          Valide
+        </span>
+        <span *ngIf="item.autorisation1=='au cours'" class="badge badge-info">
+          au cours traitement
+        </span>
+        <span  *ngIf="item.autorisation1=='refuse'" class="badge badge-danger">
+          Refuse
+        </span>
+   </clr-dg-cell>
+    <clr-dg-cell>
+      <span class="badge badge-blue" *ngIf="item.demandeId !=null">   {{item.demandeId?.titre}}</span>
+   
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span class="badge badge-purple" *ngIf="item.demandeId !=null">  
+      {{item.demandeId.etats[0]?.libelleEtat}}
+      </span>
+    </clr-dg-cell>
+      <clr-dg-cell>
+        <div class="btn-group btn-primary">
+          <button class="btn" routerLink="detail-cahiercharge/{{item.id}}"><cds-icon shape="details"></cds-icon></button>
+
+          <button class="btn btn-success" *ngIf="role=='planification'"  [disabled]="item.autorisation2=='valide' || item.autorisation2=='refuse'" routerLink="update-cahiercharge/{{item.id}}"><cds-icon shape="pencil"></cds-icon></button>
+          <button class="btn btn-danger"   *ngIf="role=='planification'" [disabled]="item.autorisation2=='valide' || item.autorisation2=='refuse'" (click)="deleteAction(item.id)"><cds-icon shape="trash"></cds-icon></button>
+          <!-- <button class="btn btn-success"(click)="valideAction(item.id)"><cds-icon shape="shield-check"></cds-icon></button> -->
+          <button class="btn btn-success" *ngIf="role=='Approbation'  " [disabled]="item.autorisation1 == 'refuse' || item.autorisation1 == 'valide'" routerLink="affectation/{{item.id}}"><cds-icon shape="event"badge="danger"></cds-icon></button>
+          <button class="btn btn-success" *ngIf="role=='commission'  && item.autorisation1 =='valide'" [disabled]="item.autorisation2 == 'refuse' || item.autorisation2 == 'valide'" routerLink="affectation/{{item.id}}"><cds-icon shape="event"badge="danger"></cds-icon></button>
+
+  
+  
+        </div>
+        
+      </clr-dg-cell>
+      <!-- Add more cells for other properties -->
+    </clr-dg-row>
+  
+    <clr-dg-footer></clr-dg-footer>
+  </clr-datagrid>
+</section>
+
+<app-deletecahiercharge [cahierchargeId]="cahierchargeId"  (closed)="closeAction()"  (saved)="saveAction()" *ngIf="show"></app-deletecahiercharge> 
+  

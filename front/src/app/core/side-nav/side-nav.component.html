@@ -1,0 +1,49 @@
+
+    <clr-vertical-nav-group routerLinkActive="active"  *ngIf="role=='planification' || role=='demandeur' || role=='admin'">
+      <cds-icon shape="folder" clrVerticalNavIcon></cds-icon>
+   Demande Achat
+      <clr-vertical-nav-group-children >
+        <a clrVerticalNavLink routerLink="./demande/add-demande" *ngIf="role=='demandeur' || role=='admin'" routerLinkActive="active"> Ajouter Demande </a>
+        <a clrVerticalNavLink routerLink="./demande" *ngIf="role=='planification' || role=='demandeur' || role=='admin'" routerLinkActive="active">liste de  Demande </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+    <clr-vertical-nav-group routerLinkActive="active" *ngIf="role=='planification' || role=='admin' || role=='commission' ||  role=='Approbation' ">
+      <cds-icon shape="clipboard"  clrVerticalNavIcon></cds-icon>
+
+      Dossiers d'Achats 
+      <clr-vertical-nav-group-children >
+        <a clrVerticalNavLink routerLink="./add-cahiercharge" *ngIf="role=='planification' || role=='admin'   " routerLinkActive="active"> Ajoute de cahier de charger </a>
+        <a clrVerticalNavLink routerLink="./cahiercharge" *ngIf="role=='planification'  || role=='admin' || role=='commission'||  role=='Approbation'  " routerLinkActive="active"> Liste de cachier de charger </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+    <clr-vertical-nav-group routerLinkActive="active" *ngIf="role=='commission' || role=='admin'">
+      <cds-icon shape="users"   clrVerticalNavIcon></cds-icon>
+
+
+    
+      commission 
+      <clr-vertical-nav-group-children>
+        <a clrVerticalNavLink routerLink="./add-Commissions"  routerLinkActive="active"> Ajouter une commission </a>
+        <a clrVerticalNavLink routerLink="./commission" routerLinkActive="active"> liste de commission </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+    <clr-vertical-nav-group routerLinkActive="active" *ngIf=" role=='admin'">
+      <cds-icon shape="user"   clrVerticalNavIcon></cds-icon>
+  
+      utilisateurs
+      <clr-vertical-nav-group-children  *ngIf=" role=='admin'">
+        <a clrVerticalNavLink routerLink="./add-user"  routerLinkActive="active"> Ajouter utilisateur </a>
+        <a clrVerticalNavLink routerLink="./user" routerLinkActive="active"> liste de utilisateur </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+    <clr-vertical-nav-group routerLinkActive="active"  *ngIf="role=='CME-CAE'||role=='admin'" >
+      <cds-icon shape="pdf-file"   clrVerticalNavIcon></cds-icon>
+
+
+     Avis Appel d'offre
+      <clr-vertical-nav-group-children  *ngIf="role=='CME-CAE'||role=='admin'" >
+        <a clrVerticalNavLink routerLink="./add-DemandeOffer"  routerLinkActive="active"> Ajoute appel d'offre </a>
+        <a clrVerticalNavLink routerLink="./demande-offer" routerLinkActive="active"> liste de  appel d'offre </a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+

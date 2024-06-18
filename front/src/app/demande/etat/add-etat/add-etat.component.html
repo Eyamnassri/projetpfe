@@ -1,0 +1,9 @@
+<div>
+  <clr-checkbox-container clrInline>
+    <clr-checkbox-wrapper *ngFor="let item of items">
+      <input type="checkbox" clrCheckbox [value]="item.value" (change)="onCheckboxChanged(item.value)">
+      <clr-progress-bar clrValue="40" clrMax="100"></clr-progress-bar>
+      <label>{{ item.label }}</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+</div>

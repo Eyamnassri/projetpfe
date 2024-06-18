@@ -1,0 +1,36 @@
+.utility-blue {
+    background-color: #0056b3; /* Adjust the color code as needed */
+    color: white;
+}
+
+.utility-blue-shade {
+    background-color: #004494; /* Adjust the color code as needed */
+    color: white;
+}
+
+.utility-blue-tint {
+    background-color: #3385ff; /* Adjust the color code as needed */
+    color: white;
+}
+
+.utility-dark-blue {
+    background-color: #002a6b; /* Adjust the color code as needed */
+    color: white;
+}
+
+.utility-dark-blue-shade {
+    background-color: #002159; /* Adjust the color code as needed */
+    color: white;
+}
+
+.utility-dark-blue-tint {
+    background-color: #336699; /* Adjust the color code as needed */
+    color: white;
+}
+.clr-row {
+    color:white
+}
+
+.clr-row h3 {
+    color:white
+}

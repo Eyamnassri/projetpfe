@@ -1,0 +1,67 @@
+<div class="login-wrapper">
+  
+    <form class="login" clrForm [formGroup]="form" (ngSubmit)="login()">
+      <div class="alert alert-danger" role="alert" *ngIf="error">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="error-standard"></cds-icon>
+            </div>
+            <span class="alert-text">{{message}}</span>
+          </div>
+        </div>
+      </div>
+  
+      <section class="title">
+
+        <div class="welcome">GROUPE CHIMIQUE TUNISIEN</div>
+        <div class="hint"><img class="img-responsive" src="assets/logo.png"></div>
+      </section>
+      <div class="login-group">
+        <!-- <clr-select-container>
+          <label>Role</label>
+          <select clrSelect name="type" formControlName="typeOption" >   formControlName=same name of  form attribut
+            <option value="user">Users</option>
+            <option value="admin">Administrateur</option>
+            <option value="demandeur">Demandeur</option>
+            <option value="planification">Planification</option>
+            <option value="approbation">Approbation</option>
+            <option value="commission"> Commission </option>
+            <option value="CME-CAE"> CME-CAE </option>
+          </select>
+        </clr-select-container> -->
+        <clr-input-container>
+          <label class="clr-sr-only">E-mail</label>
+          <input
+            type="text"
+            autocomplete="username"
+            name="username"
+            clrInput
+            placeholder="Enter e-mail" 
+           formControlName="email" 
+          
+          />
+        </clr-input-container>
+        <clr-password-container>
+          <label class="clr-sr-only">Password</label>
+          <input
+            type="password"
+            autocomplete="current-password"
+            name="password"
+            clrPassword
+            placeholder="Enter password"
+            formControlName="password"
+           
+          />
+        </clr-password-container>
+     
+        <clr-checkbox-wrapper>
+          <label>Remember me</label>
+          <input type="checkbox" name="rememberMe" clrCheckbox />
+        </clr-checkbox-wrapper>
+        <!-- <div  class="error active">Invalid user name or password</div> -->
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <!-- <a href="javascript://" class="signup">Sign up for an account</a> -->
+      </div>
+    </form>
+  </div>

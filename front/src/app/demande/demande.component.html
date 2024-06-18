@@ -1,0 +1,71 @@
+ <section>
+    <h3> Les Demandes</h3>
+    <clr-datagrid>
+      <clr-dg-action-bar *ngIf="role=='demandeur' || role=='admin'" >
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-secondary"  routerLink="add-demande" >
+            <cds-icon shape="plus"></cds-icon>
+            Ajouter demande
+          </button>
+          <!--
+           <button type="button" class="btn btn-sm btn-secondary" (click)="show = true">
+            <cds-icon shape="close"></cds-icon>
+            Delete
+          </button>
+          <button type="button" class="btn btn-sm btn-secondary" >
+            <cds-icon shape="pencil"></cds-icon>
+            Edit
+          </button>-->
+        </div>
+      </clr-dg-action-bar> 
+    
+      <clr-dg-column [clrDgField]="'titre'">id</clr-dg-column>
+      <clr-dg-column [clrDgField]="'description'">Description</clr-dg-column>
+      <clr-dg-column [clrDgField]="'type'">Type</clr-dg-column>
+      <clr-dg-column [clrDgField]="'type'">Validation</clr-dg-column>
+      <clr-dg-column [clrDgField]="'type'">Etat de demande </clr-dg-column>
+      <clr-dg-column [clrDgField]="'type'">Utisateur </clr-dg-column>
+      <clr-dg-column [clrDgField]="'type'">Action</clr-dg-column>
+
+      <!-- Add more columns as needed -->
+    
+      <clr-dg-row *clrDgItems="let demande of demandes">
+        <clr-dg-cell>{{ demande.id }}</clr-dg-cell>
+        <clr-dg-cell>{{ demande.description}}</clr-dg-cell>
+        <clr-dg-cell>{{ demande.type }}</clr-dg-cell>
+        <clr-dg-cell>
+          <span *ngIf="demande.active=='valide'" class="badge badge-success">
+            Valide
+          </span>
+          <span *ngIf="demande.active=='au cours'" class="badge badge-info">
+            au cours traitement
+          </span>
+          <span  *ngIf="demande.active=='refuse'" class="badge badge-danger">
+            Refuse
+          </span>
+        </clr-dg-cell>
+        <clr-dg-cell><span  *ngIf='demande.etats[0]?.libelleEtat!==null'class="badge badge-purple">{{ demande.etats[0]?.libelleEtat }}</span></clr-dg-cell>
+
+        <clr-dg-cell>{{ demande.userId?.name }}</clr-dg-cell>
+        
+        <clr-dg-cell>
+          <div class="btn-group btn-primary">
+            <button class="btn " routerLink="detail-demande/{{demande.id}}"><cds-icon shape="details"></cds-icon></button>
+            <button class="btn btn-success"   *ngIf="role=='demandeur' || role=='admin'"  [disabled]="demande.active=='valide' || demande.active=='refuse'" routerLink="update-demande/{{demande.id}}"><cds-icon shape="pencil"></cds-icon></button>
+            <button class="btn btn-danger" *ngIf="role=='demandeur' || role=='admin'"     [disabled]="demande.active=='valide' || demande.active=='refuse'"(click)="deleteAction(demande.id)"><cds-icon shape="trash"></cds-icon></button>
+            <button class="btn btn-success" *ngIf="role=='planification' && demande.active=='valide'" [disabled]="demande.active=='valide'" routerLink="traitement-demande/{{demande.id}}"><cds-icon shape="event" badge="success" solid></cds-icon></button>
+            <button class="btn btn-success" *ngIf="role=='planification' &&(demande.active!='valide' || demande.active=='au cours')" routerLink="traitement-demande/{{demande.id}}"><cds-icon shape="event"badge="danger"></cds-icon></button>
+
+          </div>
+        </clr-dg-cell>
+     
+        <!-- Add more cells for other properties -->
+      </clr-dg-row>
+    
+      <clr-dg-footer></clr-dg-footer>
+    </clr-datagrid>
+  </section>
+  
+    
+   <app-delete-demande [demandeId]="demandId"  (closed)="closeAction()"  (saved)="saveAction()" *ngIf="show"></app-delete-demande> 
+  <app-add-etat [items]="checkboxItems" [demandeId]="demandeId" (checkboxChanged)="onCheckboxChanged($event)"></app-add-etat>

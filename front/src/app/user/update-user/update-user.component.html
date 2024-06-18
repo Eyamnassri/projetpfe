@@ -1,0 +1,84 @@
+<span>
+  <span><a routerLink="../../">User</a></span> /
+  <span><a>Modifier</a></span>
+</span>
+<section>
+  <h3>Modifier User</h3>
+  <clr-alert *ngIf="show"[clrAlertType]="'success'" [clrAlertClosable]="true" >
+    <clr-alert-item>
+      <span class="alert-text">
+        {{message}}
+        </span>
+    </clr-alert-item>
+  </clr-alert>
+  <br>
+  <form clrStepper [formGroup]="form" (ngSubmit)="submit()">
+<clr-stepper-panel formGroupName="name">
+  <clr-step-title>Personal Information</clr-step-title>
+  <clr-step-description>Description goes here.</clr-step-description>
+  <clr-step-content *clrIfExpanded>
+    <clr-input-container>
+      <label>Nom:</label>
+      <input clrInput type="text" formControlName="name">
+      <clr-control-error *clrIfError="'required'">First Name is required</clr-control-error>
+    </clr-input-container>
+
+    <clr-combobox-container>
+      <label>Role:</label>
+      <clr-combobox  formControlName='role'name="myState" required>
+        <clr-options>.
+          <clr-option *clrOptionItems="let role of roles;" [clrValue]="role.name">
+            <cds-icon shape="user" role="img" aria-label="World is turning"></cds-icon>
+            {{ role.name }}
+            
+          </clr-option>
+        </clr-options>
+      </clr-combobox>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>There was an error</clr-control-error>
+    </clr-combobox-container>
+
+    <button clrStepButton="next">next</button>
+  </clr-step-content>
+</clr-stepper-panel>
+
+<clr-stepper-panel formGroupName="contact">
+  <clr-step-title>Contact Information</clr-step-title>
+  <clr-step-content *clrIfExpanded>
+    <clr-input-container>
+      <label>Email</label>
+      <input clrInput type="email" formControlName="email">
+      <clr-control-error *clrIfError="'required'">Email is required</clr-control-error>
+    </clr-input-container>
+<!-- 
+    <clr-input-container>
+      <label>Phone</label>
+      <input clrInput type="tel" formControlName="phone">
+    </clr-input-container> -->
+
+  
+    <button clrStepButton="next">next</button>
+  </clr-step-content>
+</clr-stepper-panel>
+
+<clr-stepper-panel formGroupName="password">
+  <clr-step-title>Password</clr-step-title>
+
+  <clr-step-content *clrIfExpanded>
+    <clr-input-container>
+      <label>Mote de passe:</label>
+      <input clrInput type="password" formControlName="password">
+      <clr-control-error *clrIfError="'required'">Mote de passe est obligatoire</clr-control-error>
+    </clr-input-container>
+
+    <clr-input-container>
+      <label>Mote de passe comfirmée </label>
+      <input clrInput type="password" formControlName="comfrimpassword">
+      <clr-control-error *clrIfError="'required'">Mote de passe comfirmée incorrect</clr-control-error>
+    </clr-input-container>
+
+    <button clrStepButton="submit">submit</button>
+  </clr-step-content>
+</clr-stepper-panel>
+</form>
+</section>

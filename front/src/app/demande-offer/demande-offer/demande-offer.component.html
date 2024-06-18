@@ -1,0 +1,52 @@
+<section>
+    <h3> Appel Offre</h3>
+        <clr-datagrid>
+          <clr-dg-action-bar>
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-secondary"  routerLink="add-DemandeOffer" >
+                <cds-icon shape="plus"></cds-icon>
+                Ajouter Appel Offre
+              </button>
+              <!--
+               <button type="button" class="btn btn-sm btn-secondary" (click)="show = true">
+                <cds-icon shape="close"></cds-icon>
+                Delete
+              </button>
+              <button type="button" class="btn btn-sm btn-secondary" >
+                <cds-icon shape="pencil"></cds-icon>
+                Edit
+              </button>-->
+               
+            </div>
+            </clr-dg-action-bar>
+            <clr-dg-column [clrDgField]="'titre'">Id</clr-dg-column>
+        <clr-dg-column [clrDgField]="'titre'">Titre </clr-dg-column>
+        <clr-dg-column [clrDgField]="'description'">Description</clr-dg-column>
+        <clr-dg-column [clrDgField]="'IsValide'">IsValide</clr-dg-column>
+        <clr-dg-column [clrDgField]="'IsValide'">Action</clr-dg-column>
+
+        <!-- <clr-dg-column [clrDgField]="'Date'"> dateOuverture</clr-dg-column>
+        <clr-dg-column [clrDgField]="'Date'"> dateLimite</clr-dg-column>
+     -->
+      
+    
+      
+        <clr-dg-row *ngFor="let item of AppelOffer ">
+          <clr-dg-cell >{{item.id}}</clr-dg-cell>
+
+          <clr-dg-cell >{{item.titre}}</clr-dg-cell>
+          <clr-dg-cell  routerLink="detail-DemandeOffer/{{item.id}}">{{item.description}}</clr-dg-cell>
+           <clr-dg-cell  routerLink="detail-DemandeOffer/{{item.id}}"><span class="badge badge-danger" *ngIf="item.isValide==false">Non</span>  <span class="badge badge-success" *ngIf="item.isValide==true"> Oui</span> </clr-dg-cell>
+        
+          <clr-dg-cell>
+            <div class="btn-group btn-primary">
+              <button class="btn btn-success" [disabled]="item.isValide==true" routerLink="valide-DemandeOffer/{{item.id}}">Valide</button>
+            </div>
+          </clr-dg-cell>
+          <!-- Add more cells for other properties -->
+        </clr-dg-row>
+        <clr-dg-footer></clr-dg-footer>
+      </clr-datagrid>
+    </section>
+    
+      

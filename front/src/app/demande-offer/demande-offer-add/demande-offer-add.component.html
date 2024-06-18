@@ -1,0 +1,111 @@
+<div>
+    <div *ngIf="show" class="alert alert-success" role="alert">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+          </div>
+          <span class="alert-text">{{message}}</span>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="showError" class="alert alert-danger" role="alert">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+          </div>
+          <span class="alert-text">{{message}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+  
+    <clr-input-container>
+      <label>Titre</label>
+      <input clrInput type="text" formControlName="titre" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Description</label>
+      <input clrInput type="text" formControlName="description" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Responsable Demande Offre</label>
+      <input clrInput type="text" formControlName="ResponsableDemandeOffre" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+   
+<clr-combobox-container>
+    <label>Demande</label>
+    <clr-combobox formControllerName="demandeId" name="myState" (clrSelectionChange)=" openChangeDemande($event)" (clrSelectionChange)="openChangeDemande($event)"	>
+      <clr-options>
+        <clr-option *clrOptionItems="let state of demandes; field: 'titre'" [clrValue]="state">
+          {{ state.titre }}
+        </clr-option>
+      </clr-options>
+    </clr-combobox>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-combobox-container>
+  
+    <clr-input-container>
+      <label>Prix Totale</label>
+      <input clrInput type="number" formControlName="PrixTotale" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Estimation Achat</label>
+      <input clrInput type="number" formControlName="EstimationAchat" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Dossier Achat</label>
+      <input clrInput type="text" formControlName="DossierAchat" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Is Valide</label>
+      <input clrInput type="checkbox" formControlName="isValide" />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Date Ouverture</label>
+      <input clrInput type="date" formControlName="dateOuverture" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+    <clr-input-container>
+      <label>Date Limite</label>
+      <input clrInput type="date" formControlName="dateLimite" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  
+   
+    <br>
+  
+    <div class="btn-group btn-primary">
+      <button class="btn btn-danger">Annuler</button>
+      <button class="btn btn-success" (submit)="submit()" [disabled]="form.invalid">Ajouter</button>
+    </div>
+  
+  </form>

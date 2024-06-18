@@ -1,0 +1,44 @@
+
+<form clrStepper clrForm [formGroup]="form" (ngSubmit)="submit()">
+    <clr-stepper-panel formGroupName="name">
+      <clr-step-title>Article</clr-step-title>
+      <clr-step-description>Informations par lot ou article</clr-step-description>
+      <clr-step-content *clrIfExpanded>
+        <clr-input-container>
+          <label>Nom d'article</label>
+          <input clrInput formControlName="first" />
+          <clr-control-error *clrIfError="'required'">Nom d'article invalide</clr-control-error>
+        </clr-input-container>
+  
+        <!-- <clr-input-container>
+          <label> Description Article</label>
+          <input clrInput formControlName="last" />
+          <clr-control-error *clrIfError="'required'">Description Article invalide</clr-control-error>
+        </clr-input-container> -->
+        <clr-textarea-container>
+            <label>Description</label>
+            <textarea clrTextarea formControlName="first" name="description" required></textarea>
+          </clr-textarea-container>
+  
+        <button clrStepButton="next">next</button>
+      </clr-step-content>
+    </clr-stepper-panel>
+  
+    <clr-stepper-panel formGroupName="contact">
+      <clr-step-title>Type Evaluation et Type Caution</clr-step-title>
+      <clr-step-description>...</clr-step-description>
+      <clr-step-content *clrIfExpanded>
+        ...
+        <button clrStepButton="next">next</button>
+      </clr-step-content>
+    </clr-stepper-panel>
+  
+    <clr-stepper-panel formGroupName="password">
+      <clr-step-title>Cautionnement </clr-step-title>
+      <clr-step-description>...</clr-step-description>
+      <clr-step-content *clrIfExpanded>
+        ...
+        <button clrStepButton="submit">submit</button>
+      </clr-step-content>
+    </clr-stepper-panel>
+  </form>

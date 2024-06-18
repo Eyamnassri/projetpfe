@@ -1,0 +1,39 @@
+<clr-datagrid>
+    <clr-dg-action-bar>
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-secondary" routerLink="addArticle/">
+            <cds-icon shape="plus"></cds-icon>
+            Add Aritcle
+          </button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="show = true">
+            <cds-icon shape="close"></cds-icon>
+            Delete
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            routerLink="/updateUnit"
+           
+          >
+            <cds-icon shape="pencil"></cds-icon>
+            Edit
+          </button>
+        </div>
+     
+      </clr-dg-action-bar>
+    <clr-dg-column  [clrDgField]="'name'" [clrDgSortOrder]="descSort">User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+       <clr-dg-row>
+    <!-- <clr-dg-row *ngFor="letitem of listUnit ">
+       <clr-dg-cell>{{item.,ame}}</clr-dg-cell>
+     <clr-dg-cell>{{item.description}}</clr-dg-cell>
+      <clr-dg-cell>{{item.value}}</clr-dg-cell>
+      <clr-dg-cell>{{item.createAt}}</clr-dg-cell> -->
+    </clr-dg-row>
+  
+    <clr-dg-footer></clr-dg-footer>
+  </clr-datagrid>
+  <app-delete-article *ngIf="show"></app-delete-article>
+

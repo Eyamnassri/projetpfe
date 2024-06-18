@@ -1,0 +1,60 @@
+<div>
+    <div  *ngIf="show" class="alert alert-success" role="alert">
+      <div class="alert-items">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+            <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+          </div>
+          <span class="alert-text">{{message}}</span>
+        </div>
+      </div>
+      </div>
+    
+      <div  *ngIf="showError" class="alert   alert-danger" role="alert">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+            </div>
+            <span class="alert-text">{{message}}</span>
+          </div>
+        </div></div>
+  </div>   
+  <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+  
+    <!-- <clr-input-container>
+      <label>titre</label>
+      <input clrInput type="text"  formControlName="titre" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container> -->
+    <clr-input-container>
+  
+  <label>description</label>
+      <input clrInput type="text" formControlName="description" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  <clr-input-container>
+    <label>date de commissions</label>
+      <input clrInput type="date" formControlName="dateCommissions" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+  <clr-input-container>
+    <label>nombre de jury</label>
+      <input clrInput type="number" formControlName="nomberJury" required />
+      <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+      <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+    </clr-input-container>
+
+      <br>
+      <div class="btn-group btn-primary">
+        <button  class="btn btn-danger">Annuler</button>
+        <button class="btn btn-success"> Modifier </button>
+        
+      </div>
+  
+  </form>
+
+  

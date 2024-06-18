@@ -1,0 +1,51 @@
+<!-- <header class="header-6">
+    <div class="branding">...</div>
+    <div class="header-nav">
+      <a href="javascript://" class="active nav-link nav-text">Dashboard</a>
+      <a href="javascript://" class="nav-link nav-text">Interactive Analytics</a>
+    </div>
+    <div class="header-actions">
+      <a href="javascript://" class="nav-link nav-icon" aria-label="settings">
+        <cds-icon shape="cog"></cds-icon>
+      </a>
+    </div>
+  </header> -->
+  <clr-header class="header-6">
+    <div class="branding">
+      <a routerlink="dashboard" class="nav-link">
+        <!-- <img type="image/icon" class="icon" width="36px" height="36px" class="img-ioc" alt="clr-icon"/> -->
+        <div class>
+          <span>
+            <cds-icon shape="user" badge="info" size="20"></cds-icon>
+            {{user.name}}
+          </span>
+          <div>
+            &nbsp;
+            <!-- {{user.email}} -->
+            <span>
+              <!-- <img src="http://demo.ioc.tn/assets/white.png" height="12px"> -->
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="clr-align-self-center">
+      <form class="search size-style">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Rechercher..." >
+        </label>
+      </form>
+    </div>
+    <div class="header-actions">
+  
+      <div class="clr-align-self-center">
+
+        <a (click)="logout()">
+          <clr-icon shape="user" size="32"> </clr-icon>
+          <span class="nav-text"> Deconnexion</span>
+        </a>
+        &nbsp;&nbsp;
+      </div>
+    </div>
+  </clr-header>
+  

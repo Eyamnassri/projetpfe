@@ -1,0 +1,99 @@
+<div class="clr-row div">
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-3">
+        <span>
+            <div class="card cursor-pointer utility-blue">
+                <div class="card-block" routerLink="/demande">
+                    <div class="card-title clr-row clr-justify-content-center">
+                        <cds-icon shape="rack-server" badge="info" size="50"></cds-icon>
+                    </div>
+                    <br>
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>Totale de demande: {{sizeDemande}}</h3>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-3">
+        <span>
+            <div class="card cursor-pointer utility-blue-shade">
+                <div class="card-block" routerLink="/user">
+                    <div class="card-title clr-row clr-justify-content-center">
+                        <cds-icon shape="users" size="50"></cds-icon>
+                    </div>
+                    <br>
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>Nomber des utilisateurs: {{usersTotale}}</h3>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-3">
+        <span>
+            <div class="card cursor-pointer utility-blue-tint">
+                <div class="card-block" routerLink="/cahiercharge">
+                    <div class="card-title clr-row clr-justify-content-center">
+                        <cds-icon shape="list" badge="info" size="50"></cds-icon>
+                    </div>
+                    <br>
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>Dossiers d'Achats : {{cahierchargeSize}}</h3>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-3">
+        <span>
+            <div class="card cursor-pointer utility-dark-blue">
+                <div class="card-block" routerLink="/commission">
+                    <div class="card-title clr-row clr-justify-content-center">
+                        <cds-icon shape="form" size="50"></cds-icon>
+                    </div>
+                    <br>
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>Totale de Commissions: {{commissionsSize}}</h3>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-3">
+        <span>
+            <div class="card cursor-pointer utility-dark-blue-shade">
+                <div class="card-block" routerLink="/demande-offer">
+                    <div class="card-title clr-row clr-justify-content-center">
+                        <cds-icon shape="pdf-file" size="50"></cds-icon>
+                    </div>
+                    <br>
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>Totale d'apple d'offre: {{AppelOffer}}</h3>
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+    <div class="clr-col-12 clr-col-md-6 clr-col-lg-9">
+        <span>
+            <div class="card cursor-pointer utility-dark-blue-tint">
+                <div class="card-block">
+                    <div class="clr-row clr-justify-content-center">
+                        <h3>list de récent demandes</h3>
+                    </div>
+                    <clr-datagrid>
+                        <clr-dg-column [clrDgField]="'titre'">id</clr-dg-column>
+                        <clr-dg-column [clrDgField]="'description'">Description</clr-dg-column>
+                        <clr-dg-column [clrDgField]="'type'">Type</clr-dg-column>
+                        <clr-dg-row *clrDgItems="let demande of demandes">
+                            <clr-dg-cell>{{demande.id}}</clr-dg-cell>
+                            <clr-dg-cell>{{demande.description}}</clr-dg-cell>
+                            <clr-dg-cell>{{demande.type}}</clr-dg-cell>
+                        </clr-dg-row>
+                        <clr-dg-footer></clr-dg-footer>
+                    </clr-datagrid>
+                </div>
+            </div>
+        </span>
+    </div>
+</div>

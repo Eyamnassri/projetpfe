@@ -1,0 +1,87 @@
+<div>
+    <span>
+      <span><a routerLink="../../">Cahier des charges</a></span>  /
+      <span><a>Affectation</a></span>
+    </span>
+      <div  *ngIf="show" class="alert alert-success" role="alert">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+            </div>
+            <span class="alert-text">{{message}}</span>
+          </div>
+        </div>
+        </div>
+      
+        <div  *ngIf="showError" class="alert   alert-danger" role="alert">
+          <div class="alert-items">
+            <div class="alert-item static">
+              <div class="alert-icon-wrapper">
+                <cds-icon class="alert-icon" shape="success-standard"></cds-icon>
+              </div>
+              <span class="alert-text">{{message}}</span>
+            </div>
+          </div></div>
+    </div>   
+    <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+      <clr-input-container>
+        <label>Titre:</label>
+        <input clrInput type="text" formControlName="titre" [disabled]="role=='Approbation'" />
+        <clr-control-helper>Entre un titre de cahier de charger valide</clr-control-helper>
+        <clr-control-error>Titre is required</clr-control-error>
+      </clr-input-container>
+  
+      <clr-input-container>
+    <label>description</label>
+        <input clrInput type="text" formControlName="description" [disabled]="role=='Approbation'" />
+        <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+        <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+      <label>type</label>
+        <input clrInput type="text" formControlName="typeDocument" [disabled]="role=='Approbation'" />
+        <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+        <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+      </clr-input-container>
+      <clr-toggle-container clrInline>
+        <label>isValide</label>      <clr-toggle-wrapper>
+          <input type="checkbox" clrToggle name="options" formControlName="isValide" [disabled]="role=='Approbation'" value="option1"  />
+          <label>Option 1</label>
+        </clr-toggle-wrapper>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error>This field is required!</clr-control-error>
+      </clr-toggle-container>
+    <clr-input-container>
+      <label>documentName:</label>
+        <input clrInput type="text" formControlName="documentName" [disabled]="role=='Approbation'" />
+        <clr-control-helper>Helper text that shows while it is pristine and valid</clr-control-helper>
+        <clr-control-error>Error message that appears after focus is lost and control is invalid</clr-control-error>
+      </clr-input-container>
+      <clr-select-container *ngIf="role!='commission'">
+        <label>Autorisation:</label>
+      <select clrSelect name="options" formControlName="autorisation1">
+        <option value="au cours">Au cours</option>
+        <option value="valide">Valide</option>
+        <option value="refuse">Refuse</option>
+      </select>
+      </clr-select-container>
+      <clr-select-container>
+        <label>AutorisationFinalle:</label>
+      <select clrSelect name="options" formControlName="autorisation2">
+        <option value="au cours">Au cours</option>
+        <option value="valide">Valide</option>
+        <option value="refuse">Refuse</option>
+      </select>
+      </clr-select-container>
+  
+        <br>
+        <div class="btn-group btn-primary">
+          <button  class="btn btn-danger">Annuler</button>
+          <button class="btn btn-success" type='submit'  [disabled]="form.invalid"> Affectation </button>
+          
+        </div>
+    
+    </form>
+  
+  

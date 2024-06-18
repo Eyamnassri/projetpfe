@@ -1,0 +1,34 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>titre</th>
+        <th>description</th>
+        <th>typeDocumment</th>
+        <th>nomDocumment</th>
+        <th>réference</th>
+        <th>isValide</th>
+        <th>date de création</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{cachier.id}}</td>
+        <td>{{cachier.titre}}</td>
+        <td>{{cachier.description}}</td>
+        <td>{{cachier.typeDocument}}</td>
+        <td>{{cachier.documentName}}</td>
+        <td>{{cachier.reference}}</td>
+        <td> <span class="badge badge-success" *ngIf="cachier.isValid==true">
+        valide
+           
+          </span><span class="badge badge-danger" *ngIf="cachier.isValide==false">
+            invalide
+             
+            </span></td>
+        <td>{{cachier.createdAt}}</td>
+
+      </tr>
+     
+    </tbody>
+  </table>
